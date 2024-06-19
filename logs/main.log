@@ -1,0 +1,122 @@
+2024-06-19 02:22:45,068 - __main__ - INFO - Merging and deduplicate lookup tables...
+2024-06-19 02:22:45,068 - __main__ - INFO - Formatting Lookup-table lookup_table_district and moving it to Formatted Zone.
+2024-06-19 02:22:45,068 - __main__ - ERROR - int() argument must be a string, a bytes-like object or a number, not 'NoneType'
+Traceback (most recent call last):
+  File "C:\Users\usuario\Desktop\BDM\Formatted_Zone_BDM\src\data_formatters\data_formatter.py", line 132, in merge_district_lookup_table
+    MongoDBUtils.create_collection(self.logger, self.vm_host, self.mongodb_port,
+  File "C:\Users\usuario\Desktop\BDM\Formatted_Zone_BDM\src\utils\mongo_utils.py", line 7, in create_collection
+    client = MongoClient(vm_host, int(mongodb_port))
+TypeError: int() argument must be a string, a bytes-like object or a number, not 'NoneType'
+2024-06-19 02:22:45,084 - __main__ - INFO - Formatting Lookup-table lookup_table_neighborhood and moving it to Formatted Zone.
+2024-06-19 02:22:45,084 - __main__ - ERROR - int() argument must be a string, a bytes-like object or a number, not 'NoneType'
+Traceback (most recent call last):
+  File "C:\Users\usuario\Desktop\BDM\Formatted_Zone_BDM\src\data_formatters\data_formatter.py", line 170, in merge_neighborhood_lookup_table
+    MongoDBUtils.create_collection(self.logger, self.vm_host, self.mongodb_port,
+  File "C:\Users\usuario\Desktop\BDM\Formatted_Zone_BDM\src\utils\mongo_utils.py", line 7, in create_collection
+    client = MongoClient(vm_host, int(mongodb_port))
+TypeError: int() argument must be a string, a bytes-like object or a number, not 'NoneType'
+2024-06-19 02:22:45,104 - __main__ - INFO - Lookup table merge and deduplication completed.
+2024-06-19 02:22:45,110 - __main__ - INFO - Building the Formatted Zone from the Persistent Zone completed successfully
+2024-06-19 02:24:49,491 - __main__ - INFO - Merging and deduplicate lookup tables...
+2024-06-19 02:24:49,493 - __main__ - INFO - Formatting Lookup-table lookup_table_district and moving it to Formatted Zone.
+2024-06-19 02:25:19,724 - __main__ - ERROR - An error occurred during the creation of the collection: lookup_table_district in MongoDB database: formatted. The error is: 10.4.41.53:27017: [WinError 10061] No connection could be made because the target machine actively refused it, Timeout: 30s, Topology Description: <TopologyDescription id: 66722551a77b78940cc0fecb, topology_type: Unknown, servers: [<ServerDescription ('10.4.41.53', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('10.4.41.53:27017: [WinError 10061] No connection could be made because the target machine actively refused it')>]>
+2024-06-19 02:25:19,728 - __main__ - INFO - Reading 'income_lookup_district' collection from MongoDB...
+2024-06-19 02:25:57,271 - __main__ - ERROR - An error occurred while reading the collection: income_lookup_district from MongoDB database: persistent. The error is: An error occurred while calling o34.load.
+: com.mongodb.MongoTimeoutException: Timed out after 30000 ms while waiting to connect. Client view of cluster state is {type=UNKNOWN, servers=[{address=10.4.41.53:27017, type=UNKNOWN, state=CONNECTING, exception={com.mongodb.MongoSocketOpenException: Exception opening socket}, caused by {java.net.ConnectException: Connection refused: connect}}]
+	at com.mongodb.internal.connection.BaseCluster.getDescription(BaseCluster.java:177)
+	at com.mongodb.internal.connection.SingleServerCluster.getDescription(SingleServerCluster.java:41)
+	at com.mongodb.client.internal.MongoClientDelegate.getConnectedClusterDescription(MongoClientDelegate.java:147)
+	at com.mongodb.client.internal.MongoClientDelegate.createClientSession(MongoClientDelegate.java:98)
+	at com.mongodb.client.internal.MongoClientDelegate$DelegateOperationExecutor.getClientSession(MongoClientDelegate.java:278)
+	at com.mongodb.client.internal.MongoClientDelegate$DelegateOperationExecutor.execute(MongoClientDelegate.java:182)
+	at com.mongodb.client.internal.MongoDatabaseImpl.executeCommand(MongoDatabaseImpl.java:194)
+	at com.mongodb.client.internal.MongoDatabaseImpl.runCommand(MongoDatabaseImpl.java:163)
+	at com.mongodb.client.internal.MongoDatabaseImpl.runCommand(MongoDatabaseImpl.java:158)
+	at com.mongodb.spark.MongoConnector.$anonfun$hasSampleAggregateOperator$1(MongoConnector.scala:234)
+	at com.mongodb.spark.MongoConnector.$anonfun$withDatabaseDo$1(MongoConnector.scala:171)
+	at com.mongodb.spark.MongoConnector.withMongoClientDo(MongoConnector.scala:154)
+	at com.mongodb.spark.MongoConnector.withDatabaseDo(MongoConnector.scala:171)
+	at com.mongodb.spark.MongoConnector.hasSampleAggregateOperator(MongoConnector.scala:234)
+	at com.mongodb.spark.rdd.MongoRDD.hasSampleAggregateOperator$lzycompute(MongoRDD.scala:221)
+	at com.mongodb.spark.rdd.MongoRDD.hasSampleAggregateOperator(MongoRDD.scala:221)
+	at com.mongodb.spark.sql.MongoInferSchema$.apply(MongoInferSchema.scala:68)
+	at com.mongodb.spark.sql.DefaultSource.constructRelation(DefaultSource.scala:97)
+	at com.mongodb.spark.sql.DefaultSource.createRelation(DefaultSource.scala:50)
+	at org.apache.spark.sql.execution.datasources.DataSource.resolveRelation(DataSource.scala:346)
+	at org.apache.spark.sql.DataFrameReader.loadV1Source(DataFrameReader.scala:229)
+	at org.apache.spark.sql.DataFrameReader.$anonfun$load$2(DataFrameReader.scala:211)
+	at scala.Option.getOrElse(Option.scala:189)
+	at org.apache.spark.sql.DataFrameReader.load(DataFrameReader.scala:211)
+	at org.apache.spark.sql.DataFrameReader.load(DataFrameReader.scala:172)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:244)
+	at py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:374)
+	at py4j.Gateway.invoke(Gateway.java:282)
+	at py4j.commands.AbstractCommand.invokeMethod(AbstractCommand.java:132)
+	at py4j.commands.CallCommand.execute(CallCommand.java:79)
+	at py4j.ClientServerConnection.waitForCommands(ClientServerConnection.java:182)
+	at py4j.ClientServerConnection.run(ClientServerConnection.java:106)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+
+2024-06-19 02:25:57,303 - __main__ - INFO - Reading 'rent_lookup_district' collection from MongoDB...
+2024-06-19 02:26:27,560 - __main__ - ERROR - An error occurred while reading the collection: rent_lookup_district from MongoDB database: persistent. The error is: An error occurred while calling o39.load.
+: com.mongodb.MongoTimeoutException: Timed out after 30000 ms while waiting to connect. Client view of cluster state is {type=UNKNOWN, servers=[{address=10.4.41.53:27017, type=UNKNOWN, state=CONNECTING, exception={com.mongodb.MongoSocketOpenException: Exception opening socket}, caused by {java.net.ConnectException: Connection refused: connect}}]
+	at com.mongodb.internal.connection.BaseCluster.getDescription(BaseCluster.java:177)
+	at com.mongodb.internal.connection.SingleServerCluster.getDescription(SingleServerCluster.java:41)
+	at com.mongodb.client.internal.MongoClientDelegate.getConnectedClusterDescription(MongoClientDelegate.java:147)
+	at com.mongodb.client.internal.MongoClientDelegate.createClientSession(MongoClientDelegate.java:98)
+	at com.mongodb.client.internal.MongoClientDelegate$DelegateOperationExecutor.getClientSession(MongoClientDelegate.java:278)
+	at com.mongodb.client.internal.MongoClientDelegate$DelegateOperationExecutor.execute(MongoClientDelegate.java:182)
+	at com.mongodb.client.internal.MongoDatabaseImpl.executeCommand(MongoDatabaseImpl.java:194)
+	at com.mongodb.client.internal.MongoDatabaseImpl.runCommand(MongoDatabaseImpl.java:163)
+	at com.mongodb.client.internal.MongoDatabaseImpl.runCommand(MongoDatabaseImpl.java:158)
+	at com.mongodb.spark.MongoConnector.$anonfun$hasSampleAggregateOperator$1(MongoConnector.scala:234)
+	at com.mongodb.spark.MongoConnector.$anonfun$withDatabaseDo$1(MongoConnector.scala:171)
+	at com.mongodb.spark.MongoConnector.withMongoClientDo(MongoConnector.scala:154)
+	at com.mongodb.spark.MongoConnector.withDatabaseDo(MongoConnector.scala:171)
+	at com.mongodb.spark.MongoConnector.hasSampleAggregateOperator(MongoConnector.scala:234)
+	at com.mongodb.spark.rdd.MongoRDD.hasSampleAggregateOperator$lzycompute(MongoRDD.scala:221)
+	at com.mongodb.spark.rdd.MongoRDD.hasSampleAggregateOperator(MongoRDD.scala:221)
+	at com.mongodb.spark.sql.MongoInferSchema$.apply(MongoInferSchema.scala:68)
+	at com.mongodb.spark.sql.DefaultSource.constructRelation(DefaultSource.scala:97)
+	at com.mongodb.spark.sql.DefaultSource.createRelation(DefaultSource.scala:50)
+	at org.apache.spark.sql.execution.datasources.DataSource.resolveRelation(DataSource.scala:346)
+	at org.apache.spark.sql.DataFrameReader.loadV1Source(DataFrameReader.scala:229)
+	at org.apache.spark.sql.DataFrameReader.$anonfun$load$2(DataFrameReader.scala:211)
+	at scala.Option.getOrElse(Option.scala:189)
+	at org.apache.spark.sql.DataFrameReader.load(DataFrameReader.scala:211)
+	at org.apache.spark.sql.DataFrameReader.load(DataFrameReader.scala:172)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method)
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62)
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566)
+	at py4j.reflection.MethodInvoker.invoke(MethodInvoker.java:244)
+	at py4j.reflection.ReflectionEngine.invoke(ReflectionEngine.java:374)
+	at py4j.Gateway.invoke(Gateway.java:282)
+	at py4j.commands.AbstractCommand.invokeMethod(AbstractCommand.java:132)
+	at py4j.commands.CallCommand.execute(CallCommand.java:79)
+	at py4j.ClientServerConnection.waitForCommands(ClientServerConnection.java:182)
+	at py4j.ClientServerConnection.run(ClientServerConnection.java:106)
+	at java.base/java.lang.Thread.run(Thread.java:834)
+
+2024-06-19 02:26:27,578 - __main__ - ERROR - 'NoneType' object has no attribute 'join'
+Traceback (most recent call last):
+  File "C:\Users\usuario\Desktop\BDM\Formatted_Zone_BDM\src\data_formatters\data_formatter.py", line 146, in merge_district_lookup_table
+    joined_df = x1_df.join(x2_df, x1_df["_id"] == x2_df["_id"], "inner")
+AttributeError: 'NoneType' object has no attribute 'join'
+2024-06-19 02:26:27,583 - __main__ - INFO - Formatting Lookup-table lookup_table_neighborhood and moving it to Formatted Zone.
+2024-06-19 02:26:57,716 - __main__ - ERROR - An error occurred during the creation of the collection: lookup_table_neighborhood in MongoDB database: formatted. The error is: 10.4.41.53:27017: [WinError 10061] No connection could be made because the target machine actively refused it, Timeout: 30s, Topology Description: <TopologyDescription id: 667225b3a77b78940cc0fece, topology_type: Unknown, servers: [<ServerDescription ('10.4.41.53', 27017) server_type: Unknown, rtt: None, error=AutoReconnect('10.4.41.53:27017: [WinError 10061] No connection could be made because the target machine actively refused it')>]>
+2024-06-19 02:26:57,721 - __main__ - INFO - Reading 'income_lookup_neighborhood' collection from MongoDB...
+2024-06-19 02:27:20,216 - __main__ - ERROR - An error occurred while reading the collection: income_lookup_neighborhood from MongoDB database: persistent. The error is: An error occurred while calling o44.load
+2024-06-19 02:27:20,222 - __main__ - INFO - Reading 'rent_lookup_neighborhood' collection from MongoDB...
+2024-06-19 02:27:22,271 - __main__ - ERROR - An error occurred while reading the collection: rent_lookup_neighborhood from MongoDB database: persistent. The error is: [WinError 10061] No connection could be made because the target machine actively refused it
+2024-06-19 02:27:22,276 - __main__ - ERROR - 'NoneType' object has no attribute 'join'
+Traceback (most recent call last):
+  File "C:\Users\usuario\Desktop\BDM\Formatted_Zone_BDM\src\data_formatters\data_formatter.py", line 184, in merge_neighborhood_lookup_table
+    joined_df = x1_df.join(x2_df, x1_df["_id"] == x2_df["_id"], "left")
+AttributeError: 'NoneType' object has no attribute 'join'
+2024-06-19 02:27:22,285 - __main__ - INFO - Lookup table merge and deduplication completed.
+2024-06-19 02:27:22,288 - __main__ - INFO - Building the Formatted Zone from the Persistent Zone completed successfully
